@@ -28,10 +28,15 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+@font-face {
+  font-family: "GowunDodum-Regular";
+  font-weight: normal;
+  src: url("./fonts/GowunDodum-Regular.ttf") format("truetype");
+}
 html, body, #root {
 	height: 100%;
 	line-height: 1;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: "GowunDodum-Regular";
 }
 ol, ul {
 	list-style: none;

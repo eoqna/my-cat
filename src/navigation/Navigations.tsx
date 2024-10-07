@@ -2,6 +2,7 @@ import { Route, Routes, useNavigate } from "react-router";
 import styled from "styled-components";
 import Home from "../screen/Home";
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const Layout = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const Navigations = () => {
 
   return (
     <Layout>
+      <Header />
       <Sidebar />
       <Routes>
         <Route index element={<Home navigation={navigation} />} />
