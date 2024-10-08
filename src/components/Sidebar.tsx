@@ -7,8 +7,8 @@ const Layout = styled.div`
   left: 0;
   height: 100%;
   width: 15%;
-  background: ${color.LightPink};
-  border: 0 solid ${color.LightPink};
+  background: ${color.Pink};
+  border: 0 solid ${color.Pink};
   border-right-width: 1px;
   z-index: 1000;
 `;
