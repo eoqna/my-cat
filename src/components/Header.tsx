@@ -3,9 +3,6 @@ import { color } from "../utils/colors";
 
 const Layout = styled.header`
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 8%;
   width: calc(100% - 32px);
   background: ${color.Pink};
