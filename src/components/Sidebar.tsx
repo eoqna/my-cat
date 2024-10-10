@@ -7,18 +7,21 @@ const Layout = styled.div`
   background: ${color.LightPink};
   border: 0 solid ${color.LightPink};
   border-right-width: 1px;
-  z-index: 1000;
 `;
 
 const MenuLayout = styled.ul`
   height: 100%;
 `;
 
+const Menu = styled.li`
+  list-style: none;
+`;
+
 const Sidebar = () => {
   return (
     <Layout>
       <MenuLayout>
-
+        <Menu></Menu>
       </MenuLayout>
     </Layout>
   );
