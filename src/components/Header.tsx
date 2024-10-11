@@ -4,7 +4,6 @@ import { color } from "../utils/colors";
 const Layout = styled.header`
   height: 8%;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: calc(100% - 32px);
   background: ${color.Pink};

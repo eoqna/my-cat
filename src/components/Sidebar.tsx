@@ -4,8 +4,8 @@ import { color } from "../utils/colors";
 const Layout = styled.div`
   height: 100%;
   width: 15%;
-  background: ${color.LightPink};
-  border: 0 solid ${color.LightPink};
+  background: ${color.Pink};
+  border: 0 solid ${color.Pink};
   border-right-width: 1px;
 `;
 
