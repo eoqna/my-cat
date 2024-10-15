@@ -28,15 +28,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-@font-face {
-  font-family: "GowunDodum-Regular";
-  font-weight: normal;
-  src: url("./fonts/GowunDodum-Regular.ttf") format("truetype");
-}
 html, body, #root {
 	height: 100%;
 	line-height: 1;
-	font-family: "GowunDodum-Regular";
 }
 ol, ul {
 	list-style: none;
@@ -72,4 +66,9 @@ body {
 
 html::-webkit-scrollbar, body::-webkit-scrollbar, .inner-wrapper::-webkit-scrollbar {
   display: none;
+}
+.single-day-regular {
+  font-family: "Single Day", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

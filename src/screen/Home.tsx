@@ -4,16 +4,14 @@ import { color } from "../utils/colors";
 import img1 from "../assets/imgs/cat1.png";
 
 const Layout = styled.div`
-  height: calc(100% - 40px);
-  width: calc(85% - 40px);
-  background: ${color.LightPink};
-  padding: 20px;
+  height: 100%;
+  width: 100%;
 `;
 
 const GridLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+  grid-gap: 30px;
 `;
 
 const ImgLayout = styled.div`
@@ -61,6 +59,54 @@ const Home = (props: NavigationProps) => {
         <ImgLayout>
           <Image src={img1} alt="cat4" />
           <Title>cat 4</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
+        </ImgLayout>
+        <ImgLayout>
+          <Image src={img1} alt="cat5" />
+          <Title>cat 5</Title>
         </ImgLayout>
         <ImgLayout>
           <Image src={img1} alt="cat5" />
