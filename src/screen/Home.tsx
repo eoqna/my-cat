@@ -11,31 +11,43 @@ const Layout = styled.div`
 const GridLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 20px;
 `;
 
-const ImgLayout = styled.div`
+const CardLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  overflow: hidden;
+  border: 1px solid ${color.Black};
+  background: ${color.White};
+  padding: 10px 10px 20px 10px;
 `;
 
-const Image = styled.img`
-  width: 100%;
+const ImgLayout = styled.div`
+  overflow: hidden;
   margin-bottom: 10px;
-  transition: all 0.2s ease-in;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  transition: all 0.15s ease-in;
   &:hover {
     transform: scale(1.05);
   }
 `;
 
+const UserName = styled.p`
+  font-size: 3vmin;
+  font-weight: bold;
+  color: ${color.Black};
+`;
+
 const Title = styled.p`
   font-size: 3vmin;
   font-weight: bold;
-  color: ${color.White};
+  color: ${color.Black};
 `;
 
 const Home = (props: NavigationProps) => {
@@ -44,74 +56,34 @@ const Home = (props: NavigationProps) => {
   return (
     <Layout>
       <GridLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat1" />
+        <CardLayout>
+          <ImgLayout>
+            <Img src={img1} alt="cat1" />
+          </ImgLayout>
+          <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 1</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat2" />
+        </CardLayout>
+        <CardLayout>
+          <ImgLayout>
+            <Img src={img1} alt="cat2" />
+          </ImgLayout>
+          <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 2</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat3" />
+        </CardLayout>
+        <CardLayout>
+          <ImgLayout>
+            <Img src={img1} alt="cat3" />
+          </ImgLayout>
+          <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 3</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat4" />
+        </CardLayout>
+        <CardLayout>
+          <ImgLayout>
+            <Img src={img1} alt="cat4" />
+          </ImgLayout>
+          <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 4</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
-        <ImgLayout>
-          <Image src={img1} alt="cat5" />
-          <Title>cat 5</Title>
-        </ImgLayout>
+        </CardLayout>
       </GridLayout>
     </Layout>
   );
