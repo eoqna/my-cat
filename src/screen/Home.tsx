@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { NavigationProps } from "../navigation";
 import { color } from "../utils/colors";
 import img1 from "../assets/imgs/cat1.png";
+import Icon from "@mdi/react";
+import { mdiHeartOutline, mdiChatOutline } from "@mdi/js";
 
 const Layout = styled.div`
   height: 100%;
@@ -25,9 +27,17 @@ const CardLayout = styled.div`
   padding: 10px 10px 20px 10px;
 `;
 
+const IconLayout = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const ImgLayout = styled.div`
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 `;
 
 const Img = styled.img`
@@ -60,6 +70,10 @@ const Home = (props: NavigationProps) => {
           <ImgLayout>
             <Img src={img1} alt="cat1" />
           </ImgLayout>
+          <IconLayout>
+            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
+            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
+          </IconLayout>
           <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 1</Title>
         </CardLayout>
@@ -67,6 +81,10 @@ const Home = (props: NavigationProps) => {
           <ImgLayout>
             <Img src={img1} alt="cat2" />
           </ImgLayout>
+          <IconLayout>
+            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
+            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
+          </IconLayout>
           <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 2</Title>
         </CardLayout>
@@ -74,6 +92,10 @@ const Home = (props: NavigationProps) => {
           <ImgLayout>
             <Img src={img1} alt="cat3" />
           </ImgLayout>
+          <IconLayout>
+            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
+            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
+          </IconLayout>
           <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 3</Title>
         </CardLayout>
@@ -81,6 +103,10 @@ const Home = (props: NavigationProps) => {
           <ImgLayout>
             <Img src={img1} alt="cat4" />
           </ImgLayout>
+          <IconLayout>
+            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
+            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
+          </IconLayout>
           <UserName>ㅇㅇ님의 고양이</UserName>
           <Title>cat 4</Title>
         </CardLayout>
