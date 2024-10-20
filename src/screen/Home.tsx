@@ -20,8 +20,6 @@ const CardLayout = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
   border: 1px solid ${color.Black};
   background: ${color.White};
   padding: 10px 10px 20px 10px;
@@ -49,15 +47,18 @@ const Img = styled.img`
 `;
 
 const UserName = styled.p`
-  font-size: 3vmin;
+  padding: 8px 0;
+  font-size: 2.6vmin;
   font-weight: bold;
   color: ${color.Black};
 `;
 
-const Title = styled.p`
-  font-size: 3vmin;
+const Instagram = styled.a`
+  padding: 8px 0;
+  font-size: 2vmin;
   font-weight: bold;
-  color: ${color.Black};
+  color: ${color.Gray};
+  cursor: pointer;
 `;
 
 const Home = (props: NavigationProps) => {
@@ -74,8 +75,8 @@ const Home = (props: NavigationProps) => {
             <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
             <Icon path={mdiChatOutline} size={1} color={color.Pink} />
           </IconLayout>
-          <UserName>ㅇㅇ님의 고양이</UserName>
-          <Title>cat 1</Title>
+          <UserName>야옹이</UserName>
+          <Instagram>@instagram_id</Instagram>
         </CardLayout>
         <CardLayout>
           <ImgLayout>
@@ -85,8 +86,8 @@ const Home = (props: NavigationProps) => {
             <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
             <Icon path={mdiChatOutline} size={1} color={color.Pink} />
           </IconLayout>
-          <UserName>ㅇㅇ님의 고양이</UserName>
-          <Title>cat 2</Title>
+          <UserName>보리</UserName>
+          <Instagram>@user_id</Instagram>
         </CardLayout>
         <CardLayout>
           <ImgLayout>
@@ -96,8 +97,8 @@ const Home = (props: NavigationProps) => {
             <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
             <Icon path={mdiChatOutline} size={1} color={color.Pink} />
           </IconLayout>
-          <UserName>ㅇㅇ님의 고양이</UserName>
-          <Title>cat 3</Title>
+          <UserName>냥냥이</UserName>
+          <Instagram>@my_id</Instagram>
         </CardLayout>
         <CardLayout>
           <ImgLayout>
@@ -107,8 +108,8 @@ const Home = (props: NavigationProps) => {
             <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
             <Icon path={mdiChatOutline} size={1} color={color.Pink} />
           </IconLayout>
-          <UserName>ㅇㅇ님의 고양이</UserName>
-          <Title>cat 4</Title>
+          <UserName>감자</UserName>
+          <Instagram>@gamjastagram</Instagram>
         </CardLayout>
       </GridLayout>
     </Layout>
