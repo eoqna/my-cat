@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { NavigationProps } from "../navigation";
 import { color } from "../utils/colors";
-import img1 from "../assets/imgs/cat1.png";
 import Icon from "@mdi/react";
 import { mdiHeartOutline, mdiChatOutline } from "@mdi/js";
+import { cats } from "../costants";
 
 const Layout = styled.div`
   height: 100%;
@@ -46,7 +46,7 @@ const Img = styled.img`
   }
 `;
 
-const UserName = styled.p`
+const CatName = styled.p`
   padding: 8px 0;
   font-size: 2.6vmin;
   font-weight: bold;
@@ -67,50 +67,19 @@ const Home = (props: NavigationProps) => {
   return (
     <Layout>
       <GridLayout>
-        <CardLayout>
-          <ImgLayout>
-            <Img src={img1} alt="cat1" />
-          </ImgLayout>
-          <IconLayout>
-            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
-            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
-          </IconLayout>
-          <UserName>야옹이</UserName>
-          <Instagram>@instagram_id</Instagram>
-        </CardLayout>
-        <CardLayout>
-          <ImgLayout>
-            <Img src={img1} alt="cat2" />
-          </ImgLayout>
-          <IconLayout>
-            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
-            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
-          </IconLayout>
-          <UserName>보리</UserName>
-          <Instagram>@user_id</Instagram>
-        </CardLayout>
-        <CardLayout>
-          <ImgLayout>
-            <Img src={img1} alt="cat3" />
-          </ImgLayout>
-          <IconLayout>
-            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
-            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
-          </IconLayout>
-          <UserName>냥냥이</UserName>
-          <Instagram>@my_id</Instagram>
-        </CardLayout>
-        <CardLayout>
-          <ImgLayout>
-            <Img src={img1} alt="cat4" />
-          </ImgLayout>
-          <IconLayout>
-            <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
-            <Icon path={mdiChatOutline} size={1} color={color.Pink} />
-          </IconLayout>
-          <UserName>감자</UserName>
-          <Instagram>@gamjastagram</Instagram>
-        </CardLayout>
+        {cats.map((cat) => (
+          <CardLayout>
+            <ImgLayout>
+              <Img src={cat.path} alt={cat.name} />
+            </ImgLayout>
+            <IconLayout>
+              <Icon path={mdiHeartOutline} size={1} color={color.Pink} />
+              <Icon path={mdiChatOutline} size={1} color={color.Pink} />
+            </IconLayout>
+            <CatName>{cat.name}</CatName>
+            <Instagram>{`@${cat.instagram}`}</Instagram>
+          </CardLayout>
+        ))}
       </GridLayout>
     </Layout>
   );
