@@ -21,7 +21,7 @@ const ContentLayout = styled.div`
 
 const HomeLayout = styled.div`
   height: calc(100% - 60px);
-  width: calc(85% - 60px);
+  width: 100%;
   background: ${color.LightPink};
   padding: 30px;
   overflow-y: auto;
@@ -48,7 +48,7 @@ const Navigations = () => {
     <Layout>
       <Header />
       <ContentLayout>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <HomeLayout>
           <Routes>
             <Route index element={<Home navigation={navigation} />} />

@@ -6,9 +6,9 @@ interface ModalState {
   open: boolean;
   type: ModalType;
   title: string;
-  content?: () => React.ReactNode;
+  content?: string;
   onConfirm: () => void;
-  onClose: () => void;
+  onClose?: () => void;
 };
 
 interface DataState {
@@ -16,7 +16,7 @@ interface DataState {
   openModal: (data: ModalState) => void;
 };
 
-const defaultModalState: ModalState = {
+export const defaultModalState: ModalState = {
   open: false,
   type: "",
   title: "",
