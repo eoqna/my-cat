@@ -20,8 +20,7 @@ const Background = styled.div`
 `;
 
 const ModalLayout = styled.div`
-  width: 300px;
-  height: 400px;
+  width: 40%;
   background: ${color.White};
   position: relative;
   padding: 20px;

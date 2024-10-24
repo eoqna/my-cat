@@ -105,7 +105,7 @@ const Home = (props: NavigationProps) => {
     <Layout>
       <GridLayout>
         {cats.map((cat) => (
-          <CardLayout>
+          <CardLayout key={cat.idx}>
             <ImgLayout onClick={() => onClickImg(cat)}>
               <Img src={cat.path} alt={cat.name} />
             </ImgLayout>
