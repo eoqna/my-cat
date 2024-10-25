@@ -1,3 +1,5 @@
+import { Comments } from "../costants";
+
 declare namespace Types {
   interface Cat {
     idx: number;
@@ -5,5 +7,13 @@ declare namespace Types {
     instagram: string;
     like: number;
     path: string;
+    comment: Comment[];
+  }
+
+  interface Comment {
+    id: number;
+    nickname: string;
+    comment: Comments;
+    create: string;
   }
 }

@@ -6,6 +6,7 @@ import { mdiHeartOutline, mdiChatOutline } from "@mdi/js";
 import { cats } from "../costants";
 import { useCallback, useState } from "react";
 import useAppStore from "../store/useAppStore";
+import { Types } from "../@types";
 
 const Layout = styled.div`
   height: 100%;
@@ -35,7 +36,7 @@ const IconLayout = styled.div`
   align-items: center;
 `;
 
-const LikeIcon = styled(Icon)`
+const PointerIcon = styled(Icon)`
   cursor: pointer;
 `;
 
@@ -92,6 +93,25 @@ const Instagram = styled.a`
   }
 `;
 
+const CommentLayout = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Comment = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+`;
+
+const CommentText = styled.span<{ name?: boolean }>`
+  font-size: 2vmin;
+  color: ${({ name }) => name ? color.Gray : color.Black};
+  ${({ name }) => name && "margin-right: 4px;"}
+`;
+
 const Home = (props: NavigationProps) => {
   const { navigation } = props;
   const { openModal } = useAppStore();
@@ -111,15 +131,23 @@ const Home = (props: NavigationProps) => {
             </ImgLayout>
             <IconLayout>
               <LikeLayout>
-                <LikeIcon path={mdiHeartOutline} size="2.2vmin" color={color.Pink} />
+                <PointerIcon path={mdiHeartOutline} size="2.2vmin" color={color.Pink} />
                 <Like>{cat.like}</Like>
               </LikeLayout>
-              <Icon path={mdiChatOutline} size={1} color={color.Pink} />
+              <PointerIcon path={mdiChatOutline} size={1} color={color.Pink} />
             </IconLayout>
             <CatLayout>
               <CatName>{cat.name}</CatName>
               <Instagram>{`@${cat.instagram}`}</Instagram>
             </CatLayout>
+            <CommentLayout>
+              {cat.comment.map((co) => (
+                <Comment key={co.id}>
+                  <CommentText name>{co.nickname}</CommentText>
+                  <CommentText> {co.comment}</CommentText>  
+                </Comment>
+              ))}
+            </CommentLayout>
           </CardLayout>
         ))}
       </GridLayout>
