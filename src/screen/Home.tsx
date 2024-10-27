@@ -46,6 +46,10 @@ const LikeLayout = styled.div`
   align-items: center;
 `;
 
+const LikeButton = styled.button`
+  border: none;
+`;  
+
 const Like = styled.p`
   color: ${color.Pink};
   font-size: 2.2vmin;
@@ -120,6 +124,10 @@ const Home = (props: NavigationProps) => {
   const onClickImg = useCallback((cat: Types.Cat) => {
     openModal({ open: true, type: "alert", onConfirm: () => {}, title: cat.name, content: cat.path });
   }, []);
+
+  const onClickLike = useCallback((idx: number) => {
+
+  }, []);
   
   return (
     <Layout>
@@ -131,7 +139,9 @@ const Home = (props: NavigationProps) => {
             </ImgLayout>
             <IconLayout>
               <LikeLayout>
-                <PointerIcon path={mdiHeartOutline} size="2.2vmin" color={color.Pink} />
+                <LikeButton onClick={() => onClickLike(cat.idx)}>
+                  <PointerIcon path={mdiHeartOutline} size="2.2vmin" color={color.Pink} />
+                </LikeButton>
                 <Like>{cat.like}</Like>
               </LikeLayout>
               <PointerIcon path={mdiChatOutline} size={1} color={color.Pink} />
