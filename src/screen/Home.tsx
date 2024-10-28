@@ -48,6 +48,7 @@ const LikeLayout = styled.div`
 
 const LikeButton = styled.button`
   border: none;
+  background: ${color.White};
 `;  
 
 const Like = styled.p`
@@ -97,32 +98,20 @@ const Instagram = styled.a`
   }
 `;
 
-const CommentLayout = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Comment = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 4px;
-`;
-
-const CommentText = styled.span<{ name?: boolean }>`
-  font-size: 2vmin;
-  color: ${({ name }) => name ? color.Gray : color.Black};
-  ${({ name }) => name && "margin-right: 4px;"}
-`;
-
 const Home = (props: NavigationProps) => {
   const { navigation } = props;
   const { openModal } = useAppStore();
   const [ liked, setLiked ] = useState(false);
 
-  const onClickImg = useCallback((cat: Types.Cat) => {
-    openModal({ open: true, type: "alert", onConfirm: () => {}, title: cat.name, content: cat.path });
+  const open = useCallback((cat: Types.Cat) => {
+    openModal({ 
+      open: true, 
+      type: "alert", 
+      onConfirm: () => {}, 
+      title: cat.name, 
+      img: cat.path,
+      comments: cat.comment,
+    });
   }, []);
 
   const onClickLike = useCallback((idx: number) => {
@@ -134,7 +123,7 @@ const Home = (props: NavigationProps) => {
       <GridLayout>
         {cats.map((cat) => (
           <CardLayout key={cat.idx}>
-            <ImgLayout onClick={() => onClickImg(cat)}>
+            <ImgLayout onClick={() => open(cat)}>
               <Img src={cat.path} alt={cat.name} />
             </ImgLayout>
             <IconLayout>
@@ -144,20 +133,14 @@ const Home = (props: NavigationProps) => {
                 </LikeButton>
                 <Like>{cat.like}</Like>
               </LikeLayout>
-              <PointerIcon path={mdiChatOutline} size={1} color={color.Pink} />
+              <LikeButton onClick={() => open(cat)}>
+                <PointerIcon path={mdiChatOutline} size={1} color={color.Pink} />
+              </LikeButton>
             </IconLayout>
             <CatLayout>
               <CatName>{cat.name}</CatName>
               <Instagram>{`@${cat.instagram}`}</Instagram>
             </CatLayout>
-            <CommentLayout>
-              {cat.comment.map((co) => (
-                <Comment key={co.id}>
-                  <CommentText name>{co.nickname}</CommentText>
-                  <CommentText> {co.comment}</CommentText>  
-                </Comment>
-              ))}
-            </CommentLayout>
           </CardLayout>
         ))}
       </GridLayout>

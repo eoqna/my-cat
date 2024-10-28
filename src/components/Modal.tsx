@@ -20,10 +20,10 @@ const Background = styled.div`
 `;
 
 const ModalLayout = styled.div`
-  width: 40%;
+  width: 25%;
   background: ${color.White};
   position: relative;
-  padding: 20px;
+  padding: 30px;
   z-index: 1001;
   cursor: default;
 `;
@@ -48,6 +48,26 @@ const Img = styled.img`
   width: 100%;
 `;
 
+const CommentLayout = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+`;
+
+const Comment = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+`;
+
+const CommentText = styled.span<{ name?: boolean }>`
+  font-size: 2vmin;
+  color: ${({ name }) => name ? color.Gray : color.Black};
+  ${({ name }) => name && "margin-right: 4px;"}
+`;
+
 const Modal = () => {
   const { modal, openModal } = useAppStore();
 
@@ -62,8 +82,16 @@ const Modal = () => {
           <Icon path={mdiClose} size="2.4vmin" color={color.Black} />
         </CloseButton>
         <ImgLayout>
-          <Img alt={modal.title} src={modal.content} />
+          <Img alt={modal.title} src={modal.img} />
         </ImgLayout>
+        <CommentLayout>
+          {modal.comments?.map((comment) => (
+            <Comment key={comment.id}>
+              <CommentText name>{comment.nickname}</CommentText>
+              <CommentText>{comment.comment}</CommentText>
+            </Comment>
+          ))}
+        </CommentLayout>
       </ModalLayout>
     </Background>
   );
