@@ -26,6 +26,7 @@ const ModalLayout = styled.div`
   padding: 30px;
   z-index: 1001;
   cursor: default;
+  border: 1px solid ${color.Black};
 `;
 
 const CloseButton = styled.div`
@@ -85,6 +86,11 @@ const Modal = () => {
           <Img alt={modal.title} src={modal.img} />
         </ImgLayout>
         <CommentLayout>
+          {!modal.comments?.length && 
+            <Comment>
+              <CommentText>등록된 댓글이 없습니다</CommentText>
+            </Comment>
+          }
           {modal.comments?.map((comment) => (
             <Comment key={comment.id}>
               <CommentText name>{comment.nickname}</CommentText>
