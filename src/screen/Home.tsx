@@ -49,6 +49,7 @@ const LikeLayout = styled.div`
 const LikeButton = styled.button`
   border: none;
   background: ${color.White};
+  padding: 0;
 `;  
 
 const Like = styled.p`

@@ -49,11 +49,26 @@ const Img = styled.img`
   width: 100%;
 `;
 
+const MenuLayout = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 0;
+`;
+
+const Button = styled.p`
+  background: ${color.White};
+  font-size: 2vmin;
+  color: ${color.Pink};
+  border: 0;
+  cursor: pointer;
+`;
+
 const CommentLayout = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
 `;
 
 const Comment = styled.div`
@@ -85,6 +100,9 @@ const Modal = () => {
         <ImgLayout>
           <Img alt={modal.title} src={modal.img} />
         </ImgLayout>
+        <MenuLayout>
+          <Button>댓글달기</Button>
+        </MenuLayout>
         <CommentLayout>
           {!modal.comments?.length && 
             <Comment>
