@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { color } from "../utils/colors";
-import { useCallback } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import useAppStore, { defaultModalState } from "../store/useAppStore";
 import Icon from "@mdi/react";
 import { mdiClose } from "@mdi/js";
@@ -49,21 +49,38 @@ const Img = styled.img`
   width: 100%;
 `;
 
-const MenuLayout = styled.div`
+const MenuLayout = styled.div<{ $show?: boolean }>`
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: ${({ $show }) => $show ? "space-between" : "flex-start"};
   align-items: center;
   padding: 10px 0;
 `;
 
-const Button = styled.p`
+const ButtonLayout = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;  
+
+const Button = styled.p<{ $margin?: boolean }>`
   background: ${color.White};
   font-size: 2vmin;
   color: ${color.Pink};
   border: 0;
   cursor: pointer;
+  ${({ $margin }) => $margin && "margin-right: 4px;"}
 `;
+
+const SelectComment = styled.select`
+  width: 80%;
+  padding: 4px 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+`;  
+
+const SelectOption = styled.option``;
 
 const CommentLayout = styled.div`
   width: 100%;
@@ -78,17 +95,31 @@ const Comment = styled.div`
   padding: 4px;
 `;
 
-const CommentText = styled.span<{ name?: boolean }>`
+const CommentText = styled.span<{ $name?: boolean }>`
   font-size: 2vmin;
-  color: ${({ name }) => name ? color.Gray : color.Black};
-  ${({ name }) => name && "margin-right: 4px;"}
+  color: ${({ $name }) => $name ? color.Gray : color.Black};
+  ${({ $name }) => $name && "margin-right: 4px;"}
 `;
 
 const Modal = () => {
   const { modal, openModal } = useAppStore();
+  const [ show, setShow ] = useState(false);
+  const [ comment, setComment ] = useState("퍼가요~❤️");
 
   const onClose = useCallback(() => {
     openModal(defaultModalState);
+  }, []);
+
+  const onPressComment = useCallback(() => {
+    setShow(true);
+  }, []);
+
+  const onSelectComment = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setComment(e.target.value);
+  }, []);
+
+  const onPressAddComment = useCallback(() => {
+    setShow(false);
   }, []);
 
   return (
@@ -100,9 +131,22 @@ const Modal = () => {
         <ImgLayout>
           <Img alt={modal.title} src={modal.img} />
         </ImgLayout>
-        <MenuLayout>
-          <Button>댓글달기</Button>
-        </MenuLayout>
+        {show ? (
+          <MenuLayout $show>
+            <SelectComment value={comment} onChange={(e) => onSelectComment(e)}>
+              <SelectOption value="퍼가요~❤️">퍼가요~❤️</SelectOption>
+              <SelectOption value="내꾸얌>_<">내꾸얌</SelectOption>
+            </SelectComment>
+            <ButtonLayout>
+              <Button $margin onClick={onPressAddComment}>확인</Button>
+              <Button onClick={onPressAddComment}>취소</Button>
+            </ButtonLayout>
+          </MenuLayout>
+        ) : (
+          <MenuLayout>
+            <Button onClick={onPressComment}>댓글달기</Button>
+          </MenuLayout>
+        )}
         <CommentLayout>
           {!modal.comments?.length && 
             <Comment>
@@ -111,7 +155,7 @@ const Modal = () => {
           }
           {modal.comments?.map((comment) => (
             <Comment key={comment.id}>
-              <CommentText name>{comment.nickname}</CommentText>
+              <CommentText $name>{comment.nickname}</CommentText>
               <CommentText>{comment.comment}</CommentText>
             </Comment>
           ))}
