@@ -16,4 +16,8 @@ declare namespace Types {
     comment: Comments;
     create: string;
   }
+
+  interface ModalProps {
+    onClose: () => void;
+  };
 }

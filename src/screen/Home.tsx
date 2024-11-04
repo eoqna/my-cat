@@ -99,16 +99,14 @@ const Instagram = styled.a`
   }
 `;
 
-const Home = (props: NavigationProps) => {
-  const { navigation } = props;
+const Home = ({ navigation }: NavigationProps) => {
   const { openModal } = useAppStore();
   const [ liked, setLiked ] = useState(false);
 
   const open = useCallback((cat: Types.Cat) => {
     openModal({ 
       open: true, 
-      type: "alert", 
-      onConfirm: () => {}, 
+      type: "comment",
       title: cat.name, 
       img: cat.path,
       comments: cat.comment,

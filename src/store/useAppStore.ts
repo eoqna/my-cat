@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { Types } from "../@types";
 
-type ModalType = "" | "alert" | "confirm";
+type ModalType = "" | "comment" | "login" | "join";
 
 interface ModalState {
   open: boolean;
@@ -9,7 +9,7 @@ interface ModalState {
   title: string;
   img?: string;
   comments?: Types.Comment[];
-  onConfirm: () => void;
+  onConfirm?: () => void;
   onClose?: () => void;
 };
 
