@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Icon from "@mdi/react";
 import { mdiClose } from "@mdi/js";
 import { color } from "../utils/colors";
+import useModal from "../hooks/useModal";
 
 const Layout = styled.div`
   display: flex;
@@ -17,15 +18,12 @@ const Layout = styled.div`
 `;
 
 const CloseButton = () => {
-  const { openModal } = useAppStore();
-
-  const onClose = useCallback(() => {
-    openModal(defaultModalState);
-  }, []);
+  const { modal } = useAppStore();
+  const { closeModal } = useModal();
 
   return (
-    <Layout onClick={onClose}>
-      <Icon path={mdiClose} size="2.4vmin" color={color.Black} />
+    <Layout onClick={closeModal}>
+      <Icon path={mdiClose} size="3vmin" color={modal.type === "comment" ? color.Black : color.White} />
     </Layout>
   );
 };

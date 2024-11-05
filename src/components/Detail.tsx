@@ -4,6 +4,7 @@ import useAppStore, { defaultModalState } from "../store/useAppStore";
 import { ChangeEvent, useCallback, useState } from "react";
 import useDataStore from "../store/useDataStore";
 import CloseButton from "./CloseButton";
+import useModal from "../hooks/useModal";
 
 const ModalLayout = styled.div`
   width: 25%;
@@ -78,15 +79,16 @@ const CommentText = styled.span<{ $name?: boolean }>`
 `;
 
 const Detail = () => {
-  const { modal, openModal } = useAppStore();
+  const { modal } = useAppStore();
   const { login } = useDataStore();
+  const { closeModal } = useModal();
   const [ show, setShow ] = useState(false);
   const [ comment, setComment ] = useState("퍼가요~❤️");
 
   const onPressComment = useCallback(() => {
     if (!login) {
       alert("로그인 후 이용하실 수 있습니다.");
-      openModal(defaultModalState);
+      closeModal();
       return;
     }
     setShow(true);
@@ -109,8 +111,7 @@ const Detail = () => {
       {show ? (
         <MenuLayout $show>
           <SelectComment 
-            value={comment} 
-            className="single-day-regular"
+            value={comment}
             onChange={(e) => onSelectComment(e)} 
           >
             <SelectOption value="퍼가요~❤️">퍼가요~❤️</SelectOption>

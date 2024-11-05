@@ -72,3 +72,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, .inner-wrapper::-webkit-scroll
   font-weight: 400;
   font-style: normal;
 }
+div, p, input, select {
+	font-family: "Single Day", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
