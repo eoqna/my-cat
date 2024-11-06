@@ -1,6 +1,6 @@
+import { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 import { color } from "../utils/colors";
-import { useCallback, useRef, useState } from "react";
 import useDataStore from "../store/useDataStore";
 import CloseButton from "./CloseButton";
 import useAppStore from "../store/useAppStore";
@@ -74,72 +74,122 @@ const SubButton = styled.p`
   cursor: pointer;
 `;
 
-const SignIn = () => {
-  const { modal } = useAppStore();
+interface UserInfoProps {
+  id: string;
+  pw: string;
+  pwck?: string;
+};
+
+const initUserInfo: UserInfoProps = {
+  id: "",
+  pw: "",
+  pwck: "",
+};
+
+const Login = () => {
   const { isLogin } = useDataStore();
   const { closeModal } = useModal();
-  const [ id, setId ] = useState("");
-  const [ pw, setPw ] = useState("");
+  const [ userInfo, setUserInfo ] = useState<UserInfoProps>(initUserInfo);
+  const [ isJoin, setIsJoin ] = useState(false);
   const idRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
+  const pwckRef = useRef<HTMLInputElement>(null);
 
   const validation = useCallback(() => {
-    if (id && pw) {
+    if (!isJoin && userInfo.id && userInfo.pw) {
       return true;
     }
 
-    if (!id) {
+    if (isJoin && userInfo.id && (userInfo.pwck === userInfo.pw)) {
+      return true;
+    }
+
+    if (!userInfo.id) {
       idRef.current?.focus();
       alert("아이디를 입력해주세요");
       return false;
     }
 
-    if (!pw) {
+    if (!userInfo.pw) {
       pwRef.current?.focus();
       alert("비밀번호를 입력해주세요");
       return false;
     }
-  }, [id, pw]);
+
+    if (isJoin && !userInfo.pwck) {
+      pwckRef.current?.focus();
+      alert("비밀번호를 확인해주세요");
+      return false;
+    }
+
+    if (isJoin && !(userInfo.pwck === userInfo.pw)) {
+      pwckRef.current?.focus();
+      alert("비밀번호 확인이 다릅니다");
+      return false;
+    }
+  }, [userInfo]);
 
   const onLogin = useCallback(() => {
     const result = validation();
 
-    if (result) {
+    if (!isJoin && result) {
       isLogin(true);
       closeModal();
     }
-  }, [id, pw]);
+
+    if (isJoin && result) {
+      alert("회원가입이 성공했습니다!\n로그인 후 이용해주세요");
+      setUserInfo(initUserInfo);
+      setIsJoin(false);
+    }
+  }, [userInfo]);
+
+  const onClickJoin = useCallback(() => {
+    setIsJoin(true);
+  }, []);
 
   return (
     <ModalLayout>
       <CloseButton />
       <TitleLayout>
-        <Title>{modal.title}</Title>
+        <Title>{isJoin ? "회원가입" : "로그인"}</Title>
       </TitleLayout>
       <LoginLayout>
         <Input 
           ref={idRef}
           type="text"
-          value={id}
+          value={userInfo.id}
           placeholder="아이디"
-          onChange={(e) => setId(e.target.value)} 
+          onChange={(e) => setUserInfo({ ...userInfo, id: e.target.value })} 
         />
         <Input 
-          $margin
+          $margin={!isJoin ? true : false}
           ref={pwRef}
           type="password"
-          value={pw}
+          value={userInfo.pw}
           placeholder="비밀번호"
-          onChange={(e) => setPw(e.target.value)} 
+          onChange={(e) => setUserInfo({ ...userInfo, pw: e.target.value })} 
         />
-        <Button onClick={onLogin}>로그인</Button>
+        {isJoin &&
+          <Input 
+            $margin
+            ref={pwckRef}
+            type="password"
+            value={userInfo.pwck}
+            placeholder="비밀번호 확인"
+            onChange={(e) => setUserInfo({ ...userInfo, pwck: e.target.value })} 
+          />
+        }
+        <Button onClick={onLogin}>{isJoin ? "가입" : "로그인"}</Button>
       </LoginLayout>
-      <SubButtonLayout>
-        <SubButton>비밀번호 찾기</SubButton>
-        <SubButton>회원가입</SubButton>
-      </SubButtonLayout>
+      {!isJoin &&
+        <SubButtonLayout>
+          <SubButton>비밀번호 찾기</SubButton>
+          <SubButton onClick={onClickJoin}>회원가입</SubButton>
+        </SubButtonLayout>
+      }
     </ModalLayout>
   );
 };
 
-export default SignIn;
+export default Login;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import useAppStore from "../store/useAppStore";
 import Detail from "./Detail";
-import SignIn from "./SignIn";
+import Login from "./Login";
 
 const Background = styled.div`
   width: 100%;
@@ -18,12 +18,12 @@ const Background = styled.div`
 `;
 
 const Modal = () => {
-  const { modal, openModal } = useAppStore();
+  const { modal } = useAppStore();
 
   return (
     <Background>
       {modal.type === "comment" && <Detail />}
-      {modal.type === "login" && <SignIn />}
+      {modal.type === "login" && <Login />}
     </Background>
   );
 };
