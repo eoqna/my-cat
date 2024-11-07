@@ -46,7 +46,7 @@ const Navigations = () => {
 
   return (
     <Layout>
-      <Header />
+      <Header navigation={navigation} />
       <ContentLayout>
         {/* <Sidebar /> */}
         <HomeLayout>

@@ -87,7 +87,7 @@ const initUserInfo: UserInfoProps = {
 };
 
 const Login = () => {
-  const { isLogin } = useDataStore();
+  const { isLogin, setUser } = useDataStore();
   const { closeModal } = useModal();
   const [ userInfo, setUserInfo ] = useState<UserInfoProps>(initUserInfo);
   const [ isJoin, setIsJoin ] = useState(false);
@@ -133,6 +133,12 @@ const Login = () => {
     const result = validation();
 
     if (!isJoin && result) {
+      setUser({
+        user_idx: 1,
+        user_id: "admin",
+        user_type: "manager",
+        liked: [ 1, 3, ],
+      });
       isLogin(true);
       closeModal();
     }

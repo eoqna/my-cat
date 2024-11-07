@@ -1,6 +1,13 @@
 import { Comments } from "../costants";
 
 declare namespace Types {
+  interface User {
+    user_idx: number;
+    user_id: string;
+    user_type: "manager" | "user" | "";
+    liked: number[];
+  }
+
   interface Cat {
     idx: number;
     name: string;
