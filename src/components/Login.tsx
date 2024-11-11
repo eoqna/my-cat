@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { color } from "../utils/colors";
 import useDataStore from "../store/useDataStore";
 import CloseButton from "./CloseButton";
-import useAppStore from "../store/useAppStore";
 import useModal from "../hooks/useModal";
 
 const ModalLayout = styled.div`
