@@ -4,6 +4,7 @@ import { color } from "../utils/colors";
 import useDataStore from "../store/useDataStore";
 import CloseButton from "./CloseButton";
 import useModal from "../hooks/useModal";
+import useAppStore from "../store/useAppStore";
 
 const ModalLayout = styled.div`
   width: 25%;
@@ -86,6 +87,7 @@ const initUserInfo: UserInfoProps = {
 };
 
 const Login = () => {
+  const { openModal } = useAppStore();
   const { isLogin, setUser } = useDataStore();
   const { closeModal } = useModal();
   const [ userInfo, setUserInfo ] = useState<UserInfoProps>(initUserInfo);
@@ -153,6 +155,14 @@ const Login = () => {
     setIsJoin(true);
   }, []);
 
+  const onClickFindPassword = useCallback(() => {
+    openModal({
+      open: true,
+      title: "비밀번호 찾기",
+      type: "find",
+    });
+  }, []);
+
   return (
     <ModalLayout>
       <CloseButton />
@@ -189,7 +199,7 @@ const Login = () => {
       </LoginLayout>
       {!isJoin &&
         <SubButtonLayout>
-          <SubButton>비밀번호 찾기</SubButton>
+          <SubButton onClick={onClickFindPassword}>비밀번호 찾기</SubButton>
           <SubButton onClick={onClickJoin}>회원가입</SubButton>
         </SubButtonLayout>
       }

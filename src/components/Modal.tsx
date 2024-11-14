@@ -2,6 +2,7 @@ import styled from "styled-components";
 import useAppStore from "../store/useAppStore";
 import Detail from "./Detail";
 import Login from "./Login";
+import FindPassword from "./FindPassword";
 
 const Background = styled.div`
   width: 100%;
@@ -24,6 +25,7 @@ const Modal = () => {
     <Background>
       {modal.type === "comment" && <Detail />}
       {modal.type === "login" && <Login />}
+      {modal.type === "find" && <FindPassword />}
     </Background>
   );
 };

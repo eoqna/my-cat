@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { Types } from "../@types";
 
-type ModalType = "" | "comment" | "login";
+type ModalType = "" | "comment" | "login" | "find";
 
 interface ModalState {
   open: boolean;
