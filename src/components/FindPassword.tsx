@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { color } from "../utils/colors";
+import { useCallback, useRef, useState } from "react";
+import CloseButton from "./CloseButton";
+import useAppStore from "../store/useAppStore";
 
 const ModalLayout = styled.div`
   width: 25%;
@@ -58,8 +61,31 @@ const Button = styled.p`
 `;
 
 const FindPassword = () => {
+  const { modal } = useAppStore();
+  const [ id, setId ] = useState("");
+  const idRef = useRef<HTMLInputElement>(null);
+
+  const onFindPassword = useCallback(() => {
+
+  }, [id]);
+
   return (
-    <ModalLayout></ModalLayout>
+    <ModalLayout>
+      <CloseButton />
+      <TitleLayout>
+        <Title>{modal.title}</Title>
+      </TitleLayout>
+      <LoginLayout>
+        <Input 
+          ref={idRef}
+          type="text"
+          value={id}
+          placeholder="아이디"
+          onChange={(e) => setId(e.target.value)} 
+        />
+        <Button onClick={onFindPassword}>비밀번호 찾기</Button>
+      </LoginLayout>
+    </ModalLayout>
   );
 };
 
