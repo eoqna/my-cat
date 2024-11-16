@@ -61,12 +61,16 @@ const Button = styled.p`
 `;
 
 const FindPassword = () => {
-  const { modal } = useAppStore();
+  const { modal, openModal } = useAppStore();
   const [ id, setId ] = useState("");
   const idRef = useRef<HTMLInputElement>(null);
 
   const onFindPassword = useCallback(() => {
-
+    openModal({
+      open: true,
+      title: "로그인",
+      type: "login",
+    });
   }, [id]);
 
   return (
