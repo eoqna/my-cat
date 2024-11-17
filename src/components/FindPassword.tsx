@@ -33,7 +33,7 @@ const LoginLayout = styled.form`
   flex-direction: column;
 `;
 
-const Input = styled.input<{ $margin?: boolean }>`
+const Input = styled.input`
   padding: 6px 8px;
   font-size: 2vmin;
   color: ${color.White};
@@ -41,7 +41,7 @@ const Input = styled.input<{ $margin?: boolean }>`
   border: 1px solid ${color.LightPink};
   border-radius: 4px;
   outline: none;
-  margin-bottom: ${({ $margin }) => $margin ? "24px" : "8px"};
+  margin-bottom: 24px;
   &::placeholder {
     color: ${color.White};
   }
@@ -66,6 +66,12 @@ const FindPassword = () => {
   const idRef = useRef<HTMLInputElement>(null);
 
   const onFindPassword = useCallback(() => {
+    if (!id) {
+      alert("아이디를 입력해 주세요");
+      idRef.current?.focus();
+      return;
+    }
+
     openModal({
       open: true,
       title: "로그인",
