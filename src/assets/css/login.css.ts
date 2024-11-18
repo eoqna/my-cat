@@ -25,7 +25,7 @@ export const Title = styled.p`
   font-weight: bold;
 `;
 
-export const LoginLayout = styled.form`
+export const InputLayout = styled.form`
   display: flex;
   flex-direction: column;
 `;

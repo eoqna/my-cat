@@ -3,6 +3,7 @@ import useAppStore from "../store/useAppStore";
 import Detail from "./Detail";
 import Login from "./Login";
 import FindPassword from "./FindPassword";
+import ImageUpload from "./ImageUpload";
 
 const Background = styled.div`
   width: 100%;
@@ -26,6 +27,7 @@ const Modal = () => {
       {modal.type === "comment" && <Detail />}
       {modal.type === "login" && <Login />}
       {modal.type === "find" && <FindPassword />}
+      {modal.type === "image" && <ImageUpload />}
     </Background>
   );
 };

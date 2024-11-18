@@ -55,8 +55,8 @@ const Header = ({ navigation }: NavigationProps) => {
   const addImage = useCallback(() => {
     openModal({
       open: true,
-      title: "로그인",
-      type: "login",
+      title: "이미지 등록",
+      type: "image",
     });
   }, []);
 
