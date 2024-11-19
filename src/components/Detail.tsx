@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { color } from "../utils/colors";
-import useAppStore, { defaultModalState } from "../store/useAppStore";
+import useAppStore from "../store/useAppStore";
 import { ChangeEvent, useCallback, useState } from "react";
 import useDataStore from "../store/useDataStore";
 import CloseButton from "./CloseButton";
